@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="game">
+        <h1>Guess My Number!</h1>
+        <p class="message">Start guessing...</p>
+        <p>Guess a number between 1 and 100:</p>
+        <input type="number" class="numberInput">
+        <input type="hidden" class="randomInput">
+        <div class="error" style="color: red;"></div>
+        <button class="check">Check!</button>
+        <button class="again">Again</button>
+        <Br></Br>
+        <div style="display: inline-block;">
+            <p>Score</p>
+            <p class="score" value="0"></p>
+        </div>
+    </div>
+    <script>
+        const message = document.querySelector('.message');
+    const numberInput = document.querySelector('.numberInput');
+    const scoreDisplay = document.querySelector('.score');
+    const numberDisplay = document.querySelector('.number');
+    const again = document.querySelector('.again');
+    const randomInput = document.querySelector('.randomInput');
+    const check = document.querySelector('.check');
+    const error = document.querySelector('.error');
+    var score = 0
+    randomInput.value = Math.floor(Math.random() * 101);
+    console.log(randomInput.value)
+
+
+    again.addEventListener('click', () => {
+        randomInput.value = Math.floor(Math.random() * 101);
+        console.log(randomInput.value)
+    })
+    check.addEventListener('click', () => {
+
+        if (numberInput.value === randomInput.value) {
+            console.log(1)
+            score += 10
+            scoreDisplay.innerHTML = score
+            randomInput.value = Math.floor(Math.random() * 101);
+            numberInput.value = ''
+            console.log(randomInput.value)
+        } else {
+            error.innerHTML = "Play again"
+            score = 0
+            numberInput.value = ''
+            scoreDisplay.innerHTML = score
+        }
+    })
+    </script>
+</body>
+</html>
